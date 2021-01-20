@@ -1,15 +1,11 @@
 const sql = require('mssql')
 
 
-// Chetu@@1231
-// chetulbl_users
-// mssql-18768-0.cloudclusters.net,18816
-
 const config = {
-    server: "mssql-18768-0.cloudclusters.net",
-    user: "chetulbl_users",
-    password: "Chetu@@1231",
-    database: "chetulbl",
+    server: process.env.SERVER,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DB,
     port: 18816,
     options: {
         encrypt: true
@@ -21,7 +17,7 @@ const searchRecord = (callback) => {
     conn.connect((err) => {
         if (err) throw err
         var req = new sql.Request(conn)
-        req.query('select * from student', (err, result) => {
+        req.query('select * from tbl_registration', (err, result) => {
             callback(err, result)
         })
     })

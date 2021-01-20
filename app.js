@@ -1,8 +1,11 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const path = require('path')
 const router1 = require('./routes/home_route')
 const { searchRecord } = require('./config/connection')
+
+console.log(process.env.DBPORT)
 
 const viewPath = path.join(__dirname, 'views')
 const staticPath = path.join(__dirname, 'public')
