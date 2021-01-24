@@ -5,6 +5,8 @@ const path = require('path')
 const router1 = require('./routes/home_route')
 const { searchRecord } = require('./config/connection')
 
+const port = process.env.PORT || 3000
+
 console.log(process.env.DBPORT)
 
 const viewPath = path.join(__dirname, 'views')
@@ -25,6 +27,6 @@ searchRecord((err, result) => {
     return console.log(result)
 })
 
-app.listen(3000, () => {
-    console.log('server running on ', 3000)
+app.listen(port, () => {
+    console.log(`server running on http://localhost:${port}/`)
 })
