@@ -4,16 +4,15 @@ const { uuid } = require('uuidv4');
 const auth = require('../middleware/auth')
 
 
-router.get('/login', auth, (req, res) => {
+router.get('/login', (req, res) => {
     res.redirect(`/admin/login/${uuid()}`)
 })
-router.get('/login/:loginid', auth, (req, res) => {
+router.get('/login/:loginid', (req, res) => {
     console.log('Login ID', req.session.email)
     res.render('admin/login')
 })
-router.post('/login', auth, (req, res) => {
-    let sess = req.session
-    sess.email = req.body.email
+router.post('/login', (req, res) => {
+    req.session.email = req.body.email
     console.log('Session ID ', sess.email)
     res.redirect('/admin/login')
 })
