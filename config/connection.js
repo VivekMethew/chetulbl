@@ -6,10 +6,10 @@ const sql = require('mssql')
 // mssql-18768-0.cloudclusters.net,18816
 
 const config = {
-    server: "mssql-18768-0.cloudclusters.net",
-    user: "chetulbl_users",
-    password: "Chetu@@1231",
-    database: "chetulbl",
+    server: process.env.SERVER,
+    user: process.env.USER,
+    password: process.env.PASSWORD,
+    database: process.env.DB,
     port: 18816,
     options: {
         encrypt: true
