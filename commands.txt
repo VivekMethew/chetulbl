@@ -1,0 +1,3 @@
+touch .gitignore
+git init
+git add .
