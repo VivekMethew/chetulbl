@@ -3,6 +3,7 @@ const router = express.Router();
 const { uuid } = require('uuidv4');
 const auth = require('../middleware/auth')
 const { login_users } = require('../config/connection')
+const multer = require('multer')
 
 
 router.get('/login', (req, res) => {
@@ -88,9 +89,30 @@ router.get('/reviews', auth, (req, res) => {
 router.get('/logout', (req, res) => {
     try {
         req.session.destroy()
-        return res.redirect('/admin/login', { session: req.session })
+        console.log('Logout user')
+        return res.redirect('/admin/login')
     } catch (err) {
         return res.send('error', err)
+    }
+})
+
+// post routes
+const storage = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'public/upload/courses')
+    },
+    filename: function(req, file, cb) {
+        cb(null, file.fieldname + '_' + Date.now() + '.png')
+    }
+})
+
+const upload = multer({ storage: storage })
+
+router.post('/add_courses', upload.single('c_file'), (req, res) => {
+    try {
+        return res.redirect('/admin/chetu')
+    } catch (err) {
+        return res.redirect('/admin/login')
     }
 })
 
