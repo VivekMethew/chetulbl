@@ -1,13 +1,21 @@
-  <!-- JavaScript Libraries -->
-  <script src="/public/lib/jquery/jquery.min.js"></script>
-  <script src="/public/lib/jquery/jquery-migrate.min.js"></script>
-  <script src="/public/lib/popper/popper.min.js"></script>
-  <script src="/public/lib/bootstrap/js/bootstrap.min.js"></script>
-  <script src="/public/lib/easing/easing.min.js"></script>
-  <script src="/public/lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="/public/lib/scrollreveal/scrollreveal.min.js"></script>
-  <!-- Contact Form JavaScript File -->
-  <script src="/public/contactform/contactform.js"></script>
-
-  <!-- Template Main Javascript File -->
-  <script src="/public/js/main.js"></script>
+<!-- JavaScript Libraries -->
+<script src="/public/js/jquery.min.js"></script>
+<script src="/public/js/jquery-migrate.min.js"></script>
+<script src="/public/js/popper.min.js"></script>
+<script src="/public/js/bootstrap.min.js"></script>
+<script src="/public/js/easing.min.js"></script>
+<script src="/public/js/owl.carousel.min.js"></script>
+<script src="/public/js/scrollreveal.min.js"></script>
+<script src="/public/js/main.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+            e.preventDefault();
+            $(this).siblings('a.active').removeClass("active");
+            $(this).addClass("active");
+            var index = $(this).index();
+            $("div.bhoechie-tab>div.bhoechie-tab-content").removeClass("active");
+            $("div.bhoechie-tab>div.bhoechie-tab-content").eq(index).addClass("active");
+        });
+    });
+</script>

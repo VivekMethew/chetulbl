@@ -14,7 +14,7 @@ router.get('/notice_event', (req, res) => {
 })
 
 router.get('/contact', (req, res) => {
-    res.render('home/courses_tools')
+    res.render('home/contact')
 })
 
 module.exports = router
