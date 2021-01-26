@@ -43,11 +43,24 @@
                                                                     <div>
                                                                         <div class="modal-body">
                                                                             <div class="row form-group">
+                                                                                <div class="col-lg-12">
+                                                                                    <label class="font-weight-bold pr-3 text-dark">Event & Review : </label>
+                                                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                                                        <input type="radio" id="radioReview" name="event_review" value="review" class="custom-control-input" checked>
+                                                                                        <label class="custom-control-label" for="radioReview">Review</label>
+                                                                                    </div>
+                                                                                    <div class="custom-control custom-radio custom-control-inline">
+                                                                                        <input type="radio" id="radioEvent" name="event_review" value="event" class="custom-control-input">
+                                                                                        <label class="custom-control-label" for="radioEvent">Event</label>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                            <div class="row form-group">
                                                                                 <div class="col-lg-6 col-md-12">
                                                                                     <label class="form-control-label">Title </label>
-                                                                                    <input type="text" name="e_title" id="e_title" class="form-control" placeholder="title">
+                                                                                    <input type="text" name="e_title" id="e_title" value="review" class="form-control" placeholder="title" disabled>
                                                                                 </div>
-                                                                                <div class="col-lg-6 col-md-12">
+                                                                                <div class="col-lg-6 col-md-12 event_option_disp">
                                                                                     <label class="form-control-label">Day </label>
                                                                                     <select name="e_day" id="e_day" class="form-control">
                                                                                         <option value="">select day</option>
@@ -61,10 +74,10 @@
                                                                                     </select>
                                                                                 </div>
                                                                             </div>
-                                                                            <div class="row form-group">
+                                                                            <div class="row form-group event_option_disp">
                                                                                 <div class="col-lg-6 col-md-12">
                                                                                     <label class="form-control-label">Date </label>
-                                                                                    <input type="date" name="e_title" id="e_title" class="form-control" placeholder="title">
+                                                                                    <input type="date" name="e_date" id="e_date" class="form-control" placeholder="title">
                                                                                 </div>
                                                                                 <div class="col-lg-6 col-md-12">
                                                                                     <label class="form-control-label">Time </label>
@@ -73,7 +86,7 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="row form-group">
+                                                                            <div class="row form-group event_option_disp">
                                                                                 <div class="col-lg-6 col-md-12">
                                                                                     <label class="form-control-label">Location </label>
                                                                                     <input type="text" name="e_addr" id="e_addr" class="form-control" placeholder="address">
@@ -84,7 +97,7 @@
                                                                                 </div>
                                                                             </div>
 
-                                                                            <div class="row form-group">
+                                                                            <div class="row form-group event_option_disp">
                                                                                 <div class="col-lg-6 col-md-12">
                                                                                     <label class="form-control-label">State </label>
                                                                                     <input type="text" name="e_state" id="e_state" class="form-control" placeholder="state">
@@ -107,7 +120,7 @@
                                                                                     <label>Upload Images</label>
                                                                                 </div>
                                                                                 <div class="col-lg-4 col-md-8 col-sm-12">
-                                                                                    <input type="file" id="e_file" name="e_file" class="form-control-file" multiple>
+                                                                                    <input type="file" id="e_file" name="e_file" class="form-control-file" multiple disabled>
                                                                                 </div>
                                                                             </div>
                                                                             <button type="submit" id="add_event" class="btn btn-primary float-left col-lg-3">ADD</button>

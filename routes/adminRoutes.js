@@ -164,31 +164,43 @@ const storageEvent = multer.diskStorage({
 const uploadEvent = multer({ storage: storageEvent })
 
 router.post('/add_event', uploadEvent.array('e_files', 10), async(req, res) => {
+    try {
+        var imgurl
+        if (req.files.length > 0) {
+            imgurl = `/${req.file.destination}/${req.file.filename}`;
+        } else {
+            imgurl = null
+        }
 
-    console.log(req.files)
-    res.send('done')
-
-
-    // try {
-    //     let imgurl = `/${req.file.destination}/${req.file.filename}`;
-    //     await proc_courses(req.body.c_title, req.body.c_url, imgurl, (err, result) => {
-    //         if (err) {
-    //             return res.status(203).send({
-    //                 success: false,
-    //                 message: err.message
-    //             })
-    //         }
-    //         if (result.output.idd > 0) {
-    //             return res.status(201).send({ success: true, message: 'success' })
-    //         }
-    //         return res.status(200).send({ success: false, message: 'allready courses exists' })
-    //     })
-    // } catch (err) {
-    //     return res.status(500).send({
-    //         success: false,
-    //         message: err.message
-    //     })
-    // }
+        await insert_event_notices(
+            req.body.e_type,
+            req.session.email,
+            req.body.e_title,
+            req.body.e_desc,
+            (req.body.e_date === 'null') ? null : req.body.e_date,
+            (req.body.e_time === 'null') ? null : req.body.e_time,
+            (req.body.e_day === 'null') ? null : req.body.e_day,
+            (req.body.e_vanue === 'null') ? null : req.body.e_vanue,
+            imgurl,
+            (err, result) => {
+                if (err) {
+                    console.log(err)
+                    return res.status(203).send({
+                        success: false,
+                        message: err.message
+                    })
+                }
+                if (result.output.idd > 0) {
+                    return res.status(201).send({ success: true, message: 'success' })
+                }
+                return res.status(200).send({ success: false, message: 'allready courses exists' })
+            })
+    } catch (err) {
+        return res.status(500).send({
+            success: false,
+            message: err.message
+        })
+    }
 })
 
 
