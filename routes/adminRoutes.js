@@ -1,9 +1,11 @@
 const express = require('express')
 const router = express.Router();
+const path = require("path");
 const { uuid } = require('uuidv4');
 const auth = require('../middleware/auth')
-const { login_users } = require('../config/connection')
+const { searchRecord, login_users, proc_courses, insert_event_notices } = require('../config/connection')
 const multer = require('multer')
+    // const { check, validationResult } = require('express-validator');
 
 
 router.get('/login', (req, res) => {
@@ -32,7 +34,6 @@ router.post('/login', (req, res) => {
             if (result.output.idd > 0) {
                 sess.email = req.body.email
                 sess.username = result.recordset[0].fname
-                    // console.log('Result', result.recordset, result.output)
                 return res.redirect('/admin/chetu')
             } else {
                 return res.redirect('/admin/login')
@@ -43,10 +44,9 @@ router.post('/login', (req, res) => {
     }
 })
 
-
 // Routes Chetu Dashboard 
 
-router.get('/chetu', auth, (req, res) => {
+router.get('/chetu', auth, async(req, res) => {
     try {
         return res.render('admin/index', { session: req.session })
     } catch (err) {
@@ -56,33 +56,53 @@ router.get('/chetu', auth, (req, res) => {
 
 router.get('/courses', auth, (req, res) => {
     try {
-        return res.render('admin/courses', { session: req.session })
+        searchRecord('select id,c_title,urls,createAt from tbl_courses', (err, result) => {
+            if (err) {
+                return res.status(203).send('error', err)
+            }
+            return res.render('admin/courses', { courses: result, session: req.session })
+        })
     } catch (err) {
-        return res.send('error', err)
+        return res.status(500).send('error', err)
     }
 })
 
 router.get('/event_notices', auth, (req, res) => {
     try {
-        return res.render('admin/event_notices', { session: req.session })
+        searchRecord('select id,c_title,urls,createAt from tbl_courses', (err, result) => {
+            if (err) {
+                return res.status(203).send('error', err)
+            }
+            return res.render('admin/event_notices', { courses: result, session: req.session })
+        })
     } catch (err) {
-        return res.send('error', err)
+        return res.status(500).send('error', err)
     }
 })
 
 router.get('/trainer', auth, (req, res) => {
     try {
-        return res.render('admin/trainer', { session: req.session })
+        searchRecord('select id,c_title,urls,createAt from tbl_courses', (err, result) => {
+            if (err) {
+                return res.status(203).send('error', err)
+            }
+            return res.render('admin/trainer', { courses: result, session: req.session })
+        })
     } catch (err) {
-        return res.send('error', err)
+        return res.status(500).send('error', err)
     }
 })
 
 router.get('/reviews', auth, (req, res) => {
     try {
-        return res.render('admin/reviews', { session: req.session })
+        searchRecord('select id,c_title,urls,createAt from tbl_courses', (err, result) => {
+            if (err) {
+                return res.status(203).send('error', err)
+            }
+            return res.render('admin/reviews', { courses: result, session: req.session })
+        })
     } catch (err) {
-        return res.send('error', err)
+        return res.status(500).send('error', err)
     }
 })
 
@@ -108,12 +128,67 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage })
 
-router.post('/add_courses', upload.single('c_file'), (req, res) => {
+router.post('/add_courses', upload.single('c_file'), async(req, res) => {
     try {
-        return res.redirect('/admin/chetu')
+        let imgurl = `/${req.file.destination}/${req.file.filename}`;
+        await proc_courses(req.body.c_title, req.body.c_url, imgurl, (err, result) => {
+            if (err) {
+                return res.status(203).send({
+                    success: false,
+                    message: err.message
+                })
+            }
+            if (result.output.idd > 0) {
+                return res.status(201).send({ success: true, message: 'success' })
+            }
+            return res.status(200).send({ success: false, message: 'allready courses exists' })
+        })
     } catch (err) {
-        return res.redirect('/admin/login')
+        return res.status(500).send({
+            success: false,
+            message: err.message
+        })
     }
+})
+
+
+const storageEvent = multer.diskStorage({
+    destination: function(req, file, cb) {
+        cb(null, 'public/upload/events')
+    },
+    filename: function(req, file, cb) {
+        cb(null, 'event' + '_' + Date.now() + path.extname(file.originalname))
+    }
+})
+
+const uploadEvent = multer({ storage: storageEvent })
+
+router.post('/add_event', uploadEvent.array('e_files', 10), async(req, res) => {
+
+    console.log(req.files)
+    res.send('done')
+
+
+    // try {
+    //     let imgurl = `/${req.file.destination}/${req.file.filename}`;
+    //     await proc_courses(req.body.c_title, req.body.c_url, imgurl, (err, result) => {
+    //         if (err) {
+    //             return res.status(203).send({
+    //                 success: false,
+    //                 message: err.message
+    //             })
+    //         }
+    //         if (result.output.idd > 0) {
+    //             return res.status(201).send({ success: true, message: 'success' })
+    //         }
+    //         return res.status(200).send({ success: false, message: 'allready courses exists' })
+    //     })
+    // } catch (err) {
+    //     return res.status(500).send({
+    //         success: false,
+    //         message: err.message
+    //     })
+    // }
 })
 
 

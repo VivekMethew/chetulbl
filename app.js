@@ -23,8 +23,16 @@ app.set('views', viewPath)
 
 app.use('/public', express.static(staticPath))
 
+app.use((req, res, next) => {
+    let sess = req.session
+    sess.email = 'chetu@elib.com'
+    sess.username = 'admin'
+    next()
+})
+
 app.use(router1)
 app.use('/admin', adminRoutes)
+
 
 // searchRecord((err, result) => {
 //     if (err) {

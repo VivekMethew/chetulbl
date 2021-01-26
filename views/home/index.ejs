@@ -82,9 +82,9 @@
                                 </div>
                                 <div class="col-md-0 col-lg-1"></div>
                                 <div class="col-md-12 col-lg-6 section-md-t3 col-sm-12">
-                                    <h4 style="color:#000; font-size:30px;font-weight:600;">Overview</h4><br>
+                                    <h4 style="color:#000; font-size:80px;font-weight:600;">Overview</h4><br>
                                     <div class="title-box-d" style="padding-bottom:0px;">
-                                        <h3 class="" style="color:#0096a3; font-size:40px;font-weight:800;">Chetu Skill Centre
+                                        <h3 class="" style="color:#0096a3; font-size:31px;font-weight:800;">Chetu Skill Centre
                                         </h3>
                                     </div>
 
@@ -123,96 +123,21 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3 text-center">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="/public/img/brand/net.png" class="img-fluid img-height">
+                        <%
+                        courses.forEach(c=>{%>
+                            <div class="col-md-3 text-center mb-4">
+                                <div class="img-tech-box">
+                                    <a href="<%= c.urls%>" target="_blank" data-toggle="tooltip">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <img src="<%= c.img_url%>" class="img-fluid img-height">
+                                            </div>
+                                        </div>
+                                    </a>
                                 </div>
                             </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="/public/img/brand/php.png" class="img-fluid img-height">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="/public/img/brand/node.png" class="img-fluid img-height">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="/public/img/brand/react.png" class="img-fluid img-height">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-3 text-center">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="/public/img/brand/angular.png" class="img-fluid img-height">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="/public/img/brand/python.jpg" class="img-fluid img-height">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="/public/img/brand/ui.png" class="img-fluid img-height">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="/public/img/brand/java.png" class="img-fluid img-height">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-3 text-center">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="/public/img/brand/qa.jpg" class="img-fluid img-height">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="/public/img/brand/cc.png" class="img-fluid img-height">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="/public/img/brand/js.png" class="img-fluid img-height">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="card">
-                                <div class="card-body">
-                                    <img src="/public/img/brand/ios.jpg" class="img-fluid img-height">
-                                </div>
-                            </div>
-                        </div>
+                            <% })
+                        %>
                     </div>
 
                 </div>

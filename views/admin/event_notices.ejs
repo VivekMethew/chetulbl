@@ -39,106 +39,139 @@
                                                     <div class="table-responsive">
                                                         <div id="dataTable_wrapper" class="dataTables_wrapper dt-bootstrap4">
                                                             <div class="row">
-                                                                <div class="col-sm-12 col-md-12 text-right">
-                                                                    <button type="submit" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter"><i class="fa fa-dot-circle-o"></i> Add Events</button>
-                                                                    <!-- Modal -->
-                                                                    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-                                                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                                                            <div class="modal-content">
-                                                                                <!-- <div class="modal-header">
-                   <h5 class="modal-title" id="exampleModalLongTitle">Add Course</h5>
-                   
-                  </div> -->
-                                                                                <div class="card-header">
-                                                                                    <div class="row">
-                                                                                        <div class="col col-md-6 text-left">
-                                                                                            <strong>Add Events</strong>
-                                                                                        </div>
-                                                                                        <div class="col col-md-6 text-right">
-                                                                                            <button type="button" class="btn btn-danger btn-circle" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                   </button>
-                                                                                        </div>
-                                                                                    </div>
+                                                                <div class="col-lg-12 pb-3">
+                                                                    <div>
+                                                                        <div class="modal-body">
+                                                                            <div class="row form-group">
+                                                                                <div class="col-lg-6 col-md-12">
+                                                                                    <label class="form-control-label">Title </label>
+                                                                                    <input type="text" name="e_title" id="e_title" class="form-control" placeholder="title">
                                                                                 </div>
-                                                                                <form action="" method="post" class="form-horizontal">
-                                                                                    <div class="modal-body">
-                                                                                        <div class="row form-group">
-                                                                                            <div class="col col-md-3">
-                                                                                                <label for="hf-email" class="form-control-label">Email</label>
-                                                                                            </div>
-                                                                                            <div class="col-12 col-md-9">
-                                                                                                <input type="email" id="hf-email" name="hf-email" placeholder="Enter Email..." class="form-control" />
-                                                                                                <span class="help-block">Please enter your email</span>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                        <div class="row form-group">
-                                                                                            <div class="col col-md-3">
-                                                                                                <label for="hf-password" class="form-control-label">Password</label>
-                                                                                            </div>
-                                                                                            <div class="col-12 col-md-9">
-                                                                                                <input type="password" id="hf-password" name="hf-password" placeholder="Enter Password..." class="form-control" />
-                                                                                                <span class="help-block">Please enter your password</span>
-                                                                                            </div>
-                                                                                        </div>
-                                                                                    </div>
-                                                                                    <div class="card-footer">
-                                                                                        <button type="submit" class="btn btn-primary btn-sm">
-                     Submit
-                    </button>
-                                                                                    </div>
-
-                                                                                </form>
+                                                                                <div class="col-lg-6 col-md-12">
+                                                                                    <label class="form-control-label">Day </label>
+                                                                                    <select name="e_day" id="e_day" class="form-control">
+                                                                                        <option value="">select day</option>
+                                                                                        <option>Sunday</option>
+                                                                                        <option>Monday</option> 
+                                                                                        <option>Tuesday</option>
+                                                                                        <option>Wednesday</option>
+                                                                                        <option>Thursday</option>
+                                                                                        <option>Friday</option>
+                                                                                        <option>Saturday</option>
+                                                                                    </select>
+                                                                                </div>
                                                                             </div>
+                                                                            <div class="row form-group">
+                                                                                <div class="col-lg-6 col-md-12">
+                                                                                    <label class="form-control-label">Date </label>
+                                                                                    <input type="date" name="e_title" id="e_title" class="form-control" placeholder="title">
+                                                                                </div>
+                                                                                <div class="col-lg-6 col-md-12">
+                                                                                    <label class="form-control-label">Time </label>
+                                                                                    <input type="time" id="e_time" name="c_time" placeholder="time" class="form-control" />
+                                                                                    <span></span>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="row form-group">
+                                                                                <div class="col-lg-6 col-md-12">
+                                                                                    <label class="form-control-label">Location </label>
+                                                                                    <input type="text" name="e_addr" id="e_addr" class="form-control" placeholder="address">
+                                                                                </div>
+                                                                                <div class="col-lg-6 col-md-12">
+                                                                                    <label class="form-control-label">City </label>
+                                                                                    <input type="text" id="e_city" name="c_city" placeholder="city" class="form-control" />
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="row form-group">
+                                                                                <div class="col-lg-6 col-md-12">
+                                                                                    <label class="form-control-label">State </label>
+                                                                                    <input type="text" name="e_state" id="e_state" class="form-control" placeholder="state">
+                                                                                </div>
+                                                                                <div class="col-lg-6 col-md-12">
+                                                                                    <label class="form-control-label">Pin Code </label>
+                                                                                    <input type="text" id="e_pincode" name="c_pincode" placeholder="pincode" class="form-control" />
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="row form-group">
+                                                                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                                                                    <label>Description </label>
+                                                                                    <textarea name="e_desc" id="e_desc" class="form-control" cols="30" rows="5" placeholder="writing..."></textarea>
+                                                                                </div>
+                                                                            </div>
+
+                                                                            <div class="row form-group pt-3 pb-3 border">
+                                                                                <div class="col-lg-2 col-md-4 col-sm-12">
+                                                                                    <label>Upload Images</label>
+                                                                                </div>
+                                                                                <div class="col-lg-4 col-md-8 col-sm-12">
+                                                                                    <input type="file" id="e_file" name="e_file" class="form-control-file" multiple>
+                                                                                </div>
+                                                                            </div>
+                                                                            <button type="submit" id="add_event" class="btn btn-primary float-left col-lg-3">ADD</button>
                                                                         </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
-                                                            <br />
                                                             <div class="row">
                                                                 <div class="col-sm-12">
                                                                     <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                                                         <thead>
                                                                             <tr role="row">
-                                                                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending" style="width: 50px;">Id</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">title</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 213px;">date</th>
+                                                                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending" style="width: 50px;">S.No</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">Course Title</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 213px;">Url</th>
                                                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 50px;">Action</th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
-                                                                            <tr role="row" class="odd">
-                                                                                <td class="sorting_1">1</td>
-                                                                                <td>C/C++ & QA</td>
-                                                                                <td>5th Assessment (final)- 18 Jan'2021</td>
-                                                                                <td>
-                                                                                    <a href="#" class="btn btn-info btn-circle">
-                                                                                        <i class="fas fa-pen"></i>
-                                                                                    </a>
-                                                                                    <a href="#" class="btn btn-danger btn-circle">
-                                                                                        <i class="fas fa-trash"></i>
-                                                                                    </a>
-                                                                                </td>
-                                                                            </tr>
+                                                                            <%
+                                                                            let count = 0
+                                                                            courses.forEach((c)=>{
+                                                                                count = count + 1
+                                                                                %>
+                                                                                <tr role="row" class="odd">
+                                                                                    <td class="sorting_1">
+                                                                                        <%= count%>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%= c.c_title%>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%= c.urls%>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <a href="#" id="cEdit<%= c.id%>" class="btn btn-info btn-circle">
+                                                                                            <i class="fas fa-pen"></i>
+                                                                                        </a>
+                                                                                        <a href="#" id="cDelete<%= c.id%>" class="btn btn-danger btn-circle ">
+                                                                                            <i class="fas fa-trash "></i>
+                                                                                        </a>
+                                                                                    </td>
+                                                                                </tr>
+                                                                                <% })
+                                                                            %>
                                                                         </tbody>
                                                                     </table>
                                                                 </div>
                                                             </div>
-                                                            <div class="row">
-                                                                <div class="col-sm-12 col-md-5">
-                                                                    <div class="dataTables_info" id="dataTable_info" role="status" aria-live="polite">Showing 1 to 10 of 50 entries</div>
+                                                            <div class="row ">
+                                                                <div class="col-sm-12 col-md-5 ">
+                                                                    <div class="dataTables_info " id="dataTable_info " role="status " aria-live="polite ">Showing 1 to 10 of 50 entries</div>
                                                                 </div>
-                                                                <div class="col-sm-12 col-md-7">
-                                                                    <div class="dataTables_paginate paging_simple_numbers" id="dataTable_paginate">
-                                                                        <ul class="pagination">
-                                                                            <li class="paginate_button page-item previous disabled" id="dataTable_previous"><a href="#" aria-controls="dataTable" data-dt-idx="0" tabindex="0" class="page-link">Previous</a></li>
-                                                                            <li class="paginate_button page-item active"><a href="#" aria-controls="dataTable" data-dt-idx="1" tabindex="0" class="page-link">1</a></li>
-                                                                            <li class="paginate_button page-item"><a href="#" aria-controls="dataTable" data-dt-idx="2" tabindex="0" class="page-link">2</a></li>
-                                                                            <li class="paginate_button page-item"><a href="#" aria-controls="dataTable" data-dt-idx="3" tabindex="0" class="page-link">3</a></li>
-                                                                            <li class="paginate_button page-item"><a href="#" aria-controls="dataTable" data-dt-idx="4" tabindex="0" class="page-link">4</a></li>
-                                                                            <li class="paginate_button page-item"><a href="#" aria-controls="dataTable" data-dt-idx="5" tabindex="0" class="page-link">5</a></li>
-                                                                            <li class="paginate_button page-item"><a href="#" aria-controls="dataTable" data-dt-idx="6" tabindex="0" class="page-link">6</a></li>
-                                                                            <li class="paginate_button page-item next" id="dataTable_next"><a href="#" aria-controls="dataTable" data-dt-idx="7" tabindex="0" class="page-link">Next</a></li>
+                                                                <div class="col-sm-12 col-md-7 ">
+                                                                    <div class="dataTables_paginate paging_simple_numbers " id="dataTable_paginate ">
+                                                                        <ul class="pagination ">
+                                                                            <li class="paginate_button page-item previous disabled " id="dataTable_previous "><a href="# " aria-controls="dataTable " data-dt-idx="0 " tabindex="0 " class="page-link ">Previous</a></li>
+                                                                            <li class="paginate_button page-item active "><a href="# " aria-controls="dataTable " data-dt-idx="1 " tabindex="0 " class="page-link ">1</a></li>
+                                                                            <li class="paginate_button page-item "><a href="# " aria-controls="dataTable " data-dt-idx="2 " tabindex="0 " class="page-link ">2</a></li>
+                                                                            <li class="paginate_button page-item "><a href="# " aria-controls="dataTable " data-dt-idx="3 " tabindex="0 " class="page-link ">3</a></li>
+                                                                            <li class="paginate_button page-item "><a href="# " aria-controls="dataTable " data-dt-idx="4 " tabindex="0 " class="page-link ">4</a></li>
+                                                                            <li class="paginate_button page-item "><a href="# " aria-controls="dataTable " data-dt-idx="5 " tabindex="0 " class="page-link ">5</a></li>
+                                                                            <li class="paginate_button page-item "><a href="# " aria-controls="dataTable " data-dt-idx="6 " tabindex="0 " class="page-link ">6</a></li>
+                                                                            <li class="paginate_button page-item next " id="dataTable_next "><a href="# " aria-controls="dataTable " data-dt-idx="7 " tabindex="0 " class="page-link ">Next</a></li>
                                                                         </ul>
                                                                     </div>
                                                                 </div>

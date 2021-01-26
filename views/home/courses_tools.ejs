@@ -31,146 +31,22 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-3 text-center">
-                            <div class="img-tech-box">
-                                <a href="https://www.w3schools.com/asp/default.ASP" target="-blank">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img src="/public/img/brand/net.png" class="img-fluid img-height">
+                        <%
+                        courses.forEach(c=>{%>
+                            <div class="col-md-3 text-center mb-4">
+                                <div class="img-tech-box">
+                                    <a href="<%= c.urls%>" target="_blank">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <img src="<%= c.img_url%>" class="img-fluid img-height">
+                                            </div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="img-tech-box">
-                                <a href="https://www.w3schools.com/php/default.asp" target="-blank">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img src="/public/img/brand/php.png" class="img-fluid img-height">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="img-tech-box">
-                                <a href="https://www.w3schools.com/nodejs/" target="-blank">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img src="/public/img/brand/node.png" class="img-fluid img-height">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="img-tech-box">
-                                <a href="https://www.w3schools.com/react/" target="-blank">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img src="/public/img/brand/react.png" class="img-fluid img-height">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                            <% })
+                        %>
                     </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-3 text-center">
-                            <div class="img-tech-box">
-                                <a href="https://www.w3schools.com/angular/" target="-blank">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img src="/public/img/brand/angular.png" class="img-fluid img-height">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="img-tech-box">
-                                <a href="https://www.w3schools.com/python/" target="-blank">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img src="/public/img/brand/python.jpg" class="img-fluid img-height">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="img-tech-box">
-                                <a href="https://www.javatpoint.com/computer-graphics-tutorial" target="-blank">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img src="/public/img/brand/ui.png" class="img-fluid img-height">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="img-tech-box">
-                                <a href="https://www.w3schools.com/java/" target="-blank">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img src="/public/img/brand/java.png" class="img-fluid img-height">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="col-md-3 text-center">
-                            <div class="img-tech-box">
-                                <a href="https://www.w3schools.in/software-testing/methods/" target="-blank">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img src="/public/img/brand/qa.jpg" class="img-fluid img-height">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="img-tech-box">
-                                <a href="https://www.w3schools.com/cpp/" target="-blank">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img src="/public/img/brand/cc.png" class="img-fluid img-height">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="img-tech-box">
-                                <a href="https://www.w3schools.com/js/default.asp" target="-blank">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img src="/public/img/brand/js.png" class="img-fluid img-height">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-md-3 text-center">
-                            <div class="img-tech-box">
-                                <a href="https://www.w3schools.com/browsers/browsers_mobile.asp" target="-blank">
-                                    <div class="card">
-                                        <div class="card-body">
-                                            <img src="/public/img/brand/ios.jpg" class="img-fluid img-height">
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
                 </div>
             </section>
