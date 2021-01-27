@@ -51,7 +51,7 @@ const proc_courses = (c_title, urls, img_url, callback) => {
     })
 }
 
-const insert_event_notices = (e_type, userid, e_title, e_desc, e_date, e_time, e_day, e_vanue, e_imgs, callback) => {
+const insert_event_notices = (e_type, userid, e_title, e_desc, e_date, e_vanue, e_imgs, callback) => {
     var conn = new sql.ConnectionPool(config)
     conn.connect(function(err) {
         var request = new sql.Request(conn);
@@ -59,9 +59,7 @@ const insert_event_notices = (e_type, userid, e_title, e_desc, e_date, e_time, e
         request.input('userid', sql.VarChar(100), userid);
         request.input('e_title', sql.VarChar(100), e_title);
         request.input('e_desc', sql.VarChar(sql.MAX), e_desc);
-        request.input('e_date', sql.Date, e_date);
-        request.input('e_time', sql.Time, e_time);
-        request.input('e_day', sql.VarChar(100), e_day);
+        request.input('e_date', sql.VarChar(100), e_date);
         request.input('e_vanue', sql.VarChar(200), e_vanue);
         request.input('e_imgs', sql.VarChar(sql.MAX), e_imgs);
         request.output('idd', sql.BigInt);
