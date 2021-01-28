@@ -22,6 +22,19 @@ const searchRecord = (qry, callback) => {
     })
 }
 
+const deleteRecord = (qry, callback) => {
+    var conn = new sql.ConnectionPool(config)
+    conn.connect((err) => {
+        if (err) throw err
+        var req = new sql.Request(conn)
+        req.query(qry, (err, result) => {
+            callback(err, result.rowsAffected[0])
+        })
+    })
+}
+
+
+
 const login_users = (email, pass, callback) => {
     var conn = new sql.ConnectionPool(config)
     conn.connect(function(err) {
@@ -110,6 +123,7 @@ const insert_reviews = (userid, r_title, r_desc, r_img, callback) => {
 
 module.exports = {
     searchRecord,
+    deleteRecord,
     login_users,
     proc_courses,
     insert_event_notices,

@@ -69,9 +69,12 @@
                                                                             </div>
                                                                             <div class="row form-group mt-3">
                                                                                 <div class="col-lg-3">
-                                                                                    <button type="submit" id="add_courses" class="btn btn-primary form-control">ADD</button>
+                                                                                    <button type="submit" id="add_courses" class="btn btn-info form-control">SAVE</button>
                                                                                 </div>
-                                                                                <div class="col-lg-9">
+                                                                                <div class="col-lg-3">
+                                                                                    <button type="submit" id="add_courses_update" class="btn btn-success form-control" disabled>UPDATE</button>
+                                                                                </div>
+                                                                                <div class="col-lg-6">
                                                                                     <p class="font-weight-bold" id="messageText"></p>
                                                                                 </div>
                                                                             </div>
@@ -107,12 +110,12 @@
                                                                                         <%= c.urls%>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <a href="#" id="cEdit<%= c.id%>" class="btn btn-info btn-circle">
+                                                                                        <button id="cEdit<%= c.id%>" onclick="return cEditFunc(`<%= c.id%>`)" class="btn btn-info btn-circle">
                                                                                             <i class="fas fa-pen"></i>
-                                                                                        </a>
-                                                                                        <a href="#" id="cDelete<%= c.id%>" class="btn btn-danger btn-circle ">
+                                                                                        </button>
+                                                                                        <button id="cDelete<%= c.id%>" onclick="return cDeleteFunc(`<%= c.id%>`)" class="btn btn-danger btn-circle ">
                                                                                             <i class="fas fa-trash "></i>
-                                                                                        </a>
+                                                                                        </button>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <% })
@@ -121,7 +124,7 @@
                                                                     </table>
                                                                 </div>
                                                             </div>
-                                                            <div class="row ">
+                                                            <div class="row d-none">
                                                                 <div class="col-sm-12 col-md-5 ">
                                                                     <div class="dataTables_info " id="dataTable_info " role="status " aria-live="polite ">Showing 1 to 10 of 50 entries</div>
                                                                 </div>

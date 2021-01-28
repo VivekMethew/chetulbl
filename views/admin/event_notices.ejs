@@ -113,9 +113,13 @@
                                                                             </div>
                                                                             <div class="row form-group mt-3">
                                                                                 <div class="col-lg-3">
-                                                                                    <button type="submit" id="add_event" class="btn btn-primary form-control">ADD</button>
+                                                                                    <button type="submit" id="add_event" class="btn btn-info form-control">SAVE</button>
                                                                                 </div>
-                                                                                <div class="col-lg-9">
+                                                                                <div class="col-lg-3">
+                                                                                    <button type="submit" id="add_event_update" class="btn btn-success form-control" disabled>UPDATE</button>
+                                                                                </div>
+
+                                                                                <div class="col-lg-6">
                                                                                     <p class="font-weight-bold" id="messageTextEvent"></p>
                                                                                 </div>
                                                                             </div>
@@ -130,34 +134,49 @@
                                                                         <thead>
                                                                             <tr role="row">
                                                                                 <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending" style="width: 50px;">S.No</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">Course Title</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 213px;">Url</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 50px;">Action</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">Type</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">Title</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">Description</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 213px;">Date</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Action</th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
                                                                             <%
                                                                             let count = 0
-                                                                            courses.forEach((c)=>{
+                                                                            event_notices.forEach((en)=>{
                                                                                 count = count + 1
                                                                                 %>
                                                                                 <tr role="row" class="odd">
                                                                                     <td class="sorting_1">
                                                                                         <%= count%>
                                                                                     </td>
+
                                                                                     <td>
-                                                                                        <%= c.c_title%>
+                                                                                        <%= en.e_type%>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <%= c.urls%>
+                                                                                        <%= en.e_title%>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <a href="#" id="cEdit<%= c.id%>" class="btn btn-info btn-circle">
+                                                                                        <%= en.e_desc%>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%
+                                                                                           if(en.dated === null){%>
+                                                                                            <span>Pending</span>
+                                                                                            <% } else{%>
+                                                                                                <%= en.dated%>
+                                                                                                    <% }
+                                                                                        %>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <button id="eEdit<%= en.id%>" onclick="return eEditFunc(`<%= en.id%>`)" class="btn btn-info btn-circle">
                                                                                             <i class="fas fa-pen"></i>
-                                                                                        </a>
-                                                                                        <a href="#" id="cDelete<%= c.id%>" class="btn btn-danger btn-circle ">
+                                                                                        </button>
+                                                                                        <button id="eDelete<%= en.id%>" onclick="return eDeleteFunc(`<%= en.id%>`)" class="btn btn-danger btn-circle ">
                                                                                             <i class="fas fa-trash "></i>
-                                                                                        </a>
+                                                                                        </button>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <% })
@@ -166,7 +185,7 @@
                                                                     </table>
                                                                 </div>
                                                             </div>
-                                                            <div class="row ">
+                                                            <div class="row d-none">
                                                                 <div class="col-sm-12 col-md-5 ">
                                                                     <div class="dataTables_info " id="dataTable_info " role="status " aria-live="polite ">Showing 1 to 10 of 50 entries</div>
                                                                 </div>

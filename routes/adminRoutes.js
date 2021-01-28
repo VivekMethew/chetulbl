@@ -3,7 +3,7 @@ const router = express.Router();
 const path = require("path");
 const { uuid } = require('uuidv4');
 const auth = require('../middleware/auth')
-const { searchRecord, login_users, proc_courses, insert_event_notices, insert_reviews, insert_tbl_employee } = require('../config/connection')
+const { searchRecord, deleteRecord, login_users, proc_courses, insert_event_notices, insert_reviews, insert_tbl_employee } = require('../config/connection')
 const multer = require('multer')
     // const { check, validationResult } = require('express-validator');
 
@@ -69,11 +69,11 @@ router.get('/courses', auth, (req, res) => {
 
 router.get('/event_notices', auth, (req, res) => {
     try {
-        searchRecord('select id,c_title,urls,createAt from tbl_courses', (err, result) => {
+        searchRecord('select id,e_type,e_title,e_desc,convert(varchar(100),e_date,0) as dated from event_notices', (err, result) => {
             if (err) {
                 return res.status(203).send('error', err)
             }
-            return res.render('admin/event_notices', { courses: result, session: req.session })
+            return res.render('admin/event_notices', { event_notices: result, session: req.session })
         })
     } catch (err) {
         return res.status(500).send('error', err)
@@ -82,11 +82,11 @@ router.get('/event_notices', auth, (req, res) => {
 
 router.get('/trainer', auth, (req, res) => {
     try {
-        searchRecord('select id,c_title,urls,createAt from tbl_courses', (err, result) => {
+        searchRecord('select id,emp_desg,fname,lname,email,phone from tbl_employee', (err, result) => {
             if (err) {
                 return res.status(203).send('error', err)
             }
-            return res.render('admin/trainer', { courses: result, session: req.session })
+            return res.render('admin/trainer', { trainers: result, session: req.session })
         })
     } catch (err) {
         return res.status(500).send('error', err)
@@ -95,11 +95,11 @@ router.get('/trainer', auth, (req, res) => {
 
 router.get('/reviews', auth, (req, res) => {
     try {
-        searchRecord('select id,c_title,urls,createAt from tbl_courses', (err, result) => {
+        searchRecord('select id,userid,r_title,r_desc,convert(varchar(100),dated,0) as dated from reviews', (err, result) => {
             if (err) {
                 return res.status(203).send('error', err)
             }
-            return res.render('admin/reviews', { courses: result, session: req.session })
+            return res.render('admin/reviews', { reviews: result, session: req.session })
         })
     } catch (err) {
         return res.status(500).send('error', err)
@@ -291,6 +291,129 @@ router.post('/add_employees', async(req, res) => {
     }
 })
 
+// delete routes
+router.delete('/event_notices/:enid', (req, res) => {
+    try {
+        deleteRecord(`delete from event_notices where id=${parseInt(req.params.enid)}`, (err, result) => {
+            if (err) {
+                return res.status(500).json({
+                    success: false,
+                    message: err.message
+                })
+            }
+            if (!result > 0) {
+                return res.status(404).json({
+                    success: false,
+                    message: 'error',
+                    result: null
+                })
+            }
+            return res.status(200).json({
+                success: true,
+                message: 'successfully deleted',
+                result: result
+            })
+        })
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: err.message
+        })
+    }
 
+})
+
+router.delete('/courses/:cid', (req, res) => {
+    try {
+        deleteRecord(`delete from tbl_courses where id=${parseInt(req.params.cid)}`, (err, result) => {
+            if (err) {
+                return res.status(500).json({
+                    success: false,
+                    message: err.message
+                })
+            }
+            if (!result > 0) {
+                return res.status(404).json({
+                    success: false,
+                    message: 'error',
+                    result: null
+                })
+            }
+            return res.status(200).json({
+                success: true,
+                message: 'successfully deleted',
+                result: result
+            })
+        })
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: err.message
+        })
+    }
+
+})
+
+router.delete('/trainers/:tid', (req, res) => {
+    try {
+        deleteRecord(`delete from tbl_employee where id=${parseInt(req.params.tid)}`, (err, result) => {
+            if (err) {
+                return res.status(500).json({
+                    success: false,
+                    message: err.message
+                })
+            }
+            if (!result > 0) {
+                return res.status(404).json({
+                    success: false,
+                    message: 'error',
+                    result: null
+                })
+            }
+            return res.status(200).json({
+                success: true,
+                message: 'successfully deleted',
+                result: result
+            })
+        })
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: err.message
+        })
+    }
+
+})
+
+router.delete('/reviews/:rid', (req, res) => {
+    try {
+        deleteRecord(`delete from reviews where id=${parseInt(req.params.rid)}`, (err, result) => {
+            if (err) {
+                return res.status(500).json({
+                    success: false,
+                    message: err.message
+                })
+            }
+            if (!result > 0) {
+                return res.status(404).json({
+                    success: false,
+                    message: 'error',
+                    result: null
+                })
+            }
+            return res.status(200).json({
+                success: true,
+                message: 'successfully deleted',
+                result: result
+            })
+        })
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            message: err.message
+        })
+    }
+
+})
 
 module.exports = router

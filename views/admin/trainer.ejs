@@ -74,9 +74,12 @@
                                                                             </div>
                                                                             <div class="row form-group mt-3">
                                                                                 <div class="col-lg-3">
-                                                                                    <button type="submit" id="add_employees" class="btn btn-primary form-control">ADD</button>
+                                                                                    <button type="submit" id="add_employees" class="btn btn-info form-control">SAVE</button>
                                                                                 </div>
-                                                                                <div class="col-lg-9">
+                                                                                <div class="col-lg-3">
+                                                                                    <button type="submit" id="update_employees" class="btn btn-success form-control" disabled>UPDATE</button>
+                                                                                </div>
+                                                                                <div class="col-lg-6">
                                                                                     <p class="font-weight-bold" id="messageTextEmployees"></p>
                                                                                 </div>
                                                                             </div>
@@ -91,15 +94,17 @@
                                                                         <thead>
                                                                             <tr role="row">
                                                                                 <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending" style="width: 50px;">S.No</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">Course Title</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 213px;">Url</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending" style="width: 50px;">Action</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">Designation</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 213px;">Name</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 213px;">Email</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 213px;">Phone</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Action</th>
                                                                             </tr>
                                                                         </thead>
                                                                         <tbody>
                                                                             <%
                                                                             let count = 0
-                                                                            courses.forEach((c)=>{
+                                                                            trainers.forEach((t)=>{
                                                                                 count = count + 1
                                                                                 %>
                                                                                 <tr role="row" class="odd">
@@ -107,18 +112,25 @@
                                                                                         <%= count%>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <%= c.c_title%>
+                                                                                        <%= t.emp_desg%>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <%= c.urls%>
+                                                                                        <span><%= t.fname%></span>
+                                                                                        <span><%= t.lname%></span>
                                                                                     </td>
                                                                                     <td>
-                                                                                        <a href="#" id="cEdit<%= c.id%>" class="btn btn-info btn-circle">
+                                                                                        <%= t.email%>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <%= t.phone%>
+                                                                                    </td>
+                                                                                    <td>
+                                                                                        <button id="tEdit<%= t.id%>" onclick="return tEditFunc(`<%= t.id%>`)" class="btn btn-info btn-circle">
                                                                                             <i class="fas fa-pen"></i>
-                                                                                        </a>
-                                                                                        <a href="#" id="cDelete<%= c.id%>" class="btn btn-danger btn-circle ">
+                                                                                        </button>
+                                                                                        <button id="tDelete<%= t.id%>" onclick="return tDeleteFunc(`<%= t.id%>`)" class="btn btn-danger btn-circle ">
                                                                                             <i class="fas fa-trash "></i>
-                                                                                        </a>
+                                                                                        </button>
                                                                                     </td>
                                                                                 </tr>
                                                                                 <% })
@@ -127,7 +139,7 @@
                                                                     </table>
                                                                 </div>
                                                             </div>
-                                                            <div class="row ">
+                                                            <div class="row d-none">
                                                                 <div class="col-sm-12 col-md-5 ">
                                                                     <div class="dataTables_info " id="dataTable_info " role="status " aria-live="polite ">Showing 1 to 10 of 50 entries</div>
                                                                 </div>

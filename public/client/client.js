@@ -18,6 +18,7 @@ $(document).ready(function() {
             .then((response) => {
                 let data = response.data
                 if (data.success) {
+                    location.reload()
                     document.getElementById('messageTextEmployees').innerHTML = data.message;
                     document.getElementById('messageTextEmployees').className = 'text-success';
                 } else {
@@ -43,6 +44,7 @@ $(document).ready(function() {
             .then((response) => {
                 let data = response.data
                 if (data.success) {
+                    location.reload()
                     document.getElementById('messageText').innerHTML = data.message;
                     document.getElementById('messageText').className = 'text-success';
                 } else {
@@ -87,6 +89,7 @@ $(document).ready(function() {
                 .then((response) => {
                     let data = response.data
                     if (data.success) {
+                        location.reload()
                         document.getElementById('messageTextEvent').innerHTML = data.message;
                         document.getElementById('messageTextEvent').className = 'text-success';
                     } else {
@@ -128,13 +131,13 @@ $(document).ready(function() {
                 .then((response) => {
                     let data = response.data
                     if (data.success) {
+                        location.reload()
                         document.getElementById('messageTextEvent').innerHTML = data.message;
                         document.getElementById('messageTextEvent').className = 'text-success';
                     } else {
                         document.getElementById('messageTextEvent').innerHTML = data.message;
                         document.getElementById('messageTextEvent').className = 'text-danger';
                     }
-                    // console.log(response)
                 });
         }
     });
@@ -169,6 +172,7 @@ $(document).ready(function() {
                 .then((response) => {
                     let data = response.data
                     if (data.success) {
+                        location.reload()
                         document.getElementById('messageTextReview').innerHTML = data.message;
                         document.getElementById('messageTextReview').className = 'text-success';
                     } else {
@@ -198,6 +202,7 @@ $(document).ready(function() {
                 .then((response) => {
                     let data = response.data
                     if (data.success) {
+                        location.reload()
                         document.getElementById('messageTextReview').innerHTML = data.message;
                         document.getElementById('messageTextReview').className = 'text-success';
                     } else {
@@ -208,4 +213,98 @@ $(document).ready(function() {
                 });
         }
     });
+
 })
+
+// Event & Notice delete and updated
+function eEditFunc(id) {
+    if (confirm("Edit")) {
+        console.log('ok')
+            // axios.delete(`/admin/event_notices/${id}`)
+            //     .then(function(response) {
+            //         console.log(response.data);
+            //         location.reload()
+            //     })
+    }
+}
+
+function eDeleteFunc(id) {
+    if (confirm("Are you sure deleted this item")) {
+        axios.delete(`/admin/event_notices/${id}`)
+            .then(function(response) {
+                console.log(response.data);
+                location.reload()
+            })
+    }
+}
+
+// Courses Delete and update
+
+function cEditFunc(id) {
+    if (confirm("Edit")) {
+        console.log('ok')
+            // axios.delete(`/admin/event_notices/${id}`)
+            //     .then(function(response) {
+            //         console.log(response.data);
+            //         location.reload()
+            //     })
+    }
+}
+
+function cDeleteFunc(id) {
+    if (confirm("Are you sure deleted this item")) {
+        axios.delete(`/admin/courses/${id}`)
+            .then(function(response) {
+                console.log(response.data);
+                location.reload()
+            })
+    }
+}
+
+
+// Employee Delete and update
+
+function tEditFunc(id) {
+    if (confirm("Edit")) {
+        console.log('ok')
+            // axios.delete(`/admin/event_notices/${id}`)
+            //     .then(function(response) {
+            //         console.log(response.data);
+            //         location.reload()
+            //     })
+    }
+}
+
+function tDeleteFunc(id) {
+    if (confirm("Are you sure deleted this item")) {
+        axios.delete(`/admin/trainers/${id}`)
+            .then(function(response) {
+                console.log(response.data);
+                location.reload()
+            })
+    }
+}
+
+
+// Reviews Delete and update
+
+function rEditFunc(id) {
+    if (confirm(id)) {
+        console.log(id)
+            // axios.delete(`/admin/event_notices/${id}`)
+            //     .then(function(response) {
+            //         console.log(response.data);
+            //         location.reload()
+            //     })
+    }
+}
+
+function rDeleteFunc(id) {
+    if (confirm("Are you sure deleted this item")) {
+        axios.delete(`/admin/reviews/${id}`)
+            .then(function(response) {
+                console.log(response.data);
+                location.reload()
+            })
+    }
+}
