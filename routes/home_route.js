@@ -30,8 +30,21 @@ router.get('/courses_tools', (req, res) => {
     }
 })
 
+// event
+
 router.get('/notice_event', (req, res) => {
-    res.render('home/notice_event')
+    try {
+        searchRecord('select e_type,userid,e_title,e_desc,convert(varchar(100),e_date,0) as e_date,e_vanue,e_imgs from event_notices', (err, result) => {
+            if (err) {
+                return res.send('Error', err)
+            }
+
+            // console.log(images)
+            return res.render('home/notice_event', { evt_n: result })
+        })
+    } catch (err) {
+        return res.send('Error', err)
+    }
 })
 
 router.get('/contact', (req, res) => {
