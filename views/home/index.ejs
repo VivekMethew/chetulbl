@@ -158,23 +158,35 @@
                         </div>
                     </div>
                     <div class="row">
+                        <%
+                        hr_emp.forEach(hr=>{
+                            if(hr.emp_g === null){%>
+                            <div class="col-md-4 mb-3">
+                                <div class="card">
+                                    <img class="card-img-top" src="/public/upload/mn/dummyp.jpg">
+                                    <div class="card-block">
+                                        <h5 class="font-weight-bold text-capitalize">
+                                            <%= hr.fname%>
+                                                <%= hr.lname%>
+                                        </h5>
+                                    </div>
+                                </div>
+                            </div>
+                            <% }else{%>
+                                <div class="col-md-4 mb-3">
+                                    <div class="card">
+                                        <img class="card-img-top" src="<%= hr.emp_g%>">
+                                        <div class="card-block">
+                                            <h5 class="font-weight-bold text-capitalize">
+                                                <%= hr.fname%>
+                                                    <%= hr.lname%>
+                                            </h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% }  })
+                        %>
 
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img class="card-img-top" src="/public/img/junaid.jpg">
-                                <div class="card-block">
-                                    <h5 class="text-bold">Junaid Hanfi</h5>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="card">
-                                <img class="card-img-top" src="/public/img/Mayank.jpg">
-                                <div class="card-block">
-                                    <h5 class="text-bold">Mayank Rana</h5>
-                                </div>
-                            </div>
-                        </div>
                     </div>
             </section>
             <!--/ Team End /-->
@@ -200,90 +212,35 @@
                         </div>
                         <div class="col-sm-12 col-md-6">
                             <div id="testimonial-carousel" class="owl-carousel owl-arrow">
-                                <div class="carousel-item-a">
-                                    <div class="testimonials-box">
-                                        <div class="row">
-                                            <div class="col-sm-12 col-md-12">
-                                                <div class="testimonial-ico">
-                                                    <span class="ion-ios-quote"></span>
-                                                </div>
-                                                <div class="testimonials-content">
-                                                    <p class="testimonial-text">
-                                                        Thanks to Chetu- your trainer was skilled, and his teaching methods were commendable. the training schedule was properly followed. It was a highly satisfactory experience for me.
-                                                    </p>
-                                                </div>
-                                                <div class="testimonial-author-box">
-                                                    <img src="/public/img/user.jpg" alt="" class="testimonial-avatar">
-                                                    <h5 class="testimonial-author">Prince Tyagi<br> IOS Batch </h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item-a">
-                                    <div class="testimonials-box">
-                                        <div class="row">
-
-                                            <div class="col-sm-12 col-md-12">
-                                                <div class="testimonial-ico">
-                                                    <span class="ion-ios-quote"></span>
-                                                </div>
-                                                <div class="testimonials-content">
-                                                    <p class="testimonial-text">
-                                                        In skill centre, I came to learn new technology along with the live Project Training.
-                                                    </p>
-                                                </div>
-                                                <div class="testimonial-author-box">
-                                                    <img src="/public/img/user.jpg" alt="" class="testimonial-avatar">
-                                                    <h5 class="testimonial-author">Shubham Sharma<br> (JS Batch)</h5>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="carousel-item-a">
-                                    <div class="testimonials-box">
-                                        <div class="row">
-                                            <div class="col-sm-12 col-md-12">
-                                                <div class="testimonial-ico">
-                                                    <span class="ion-ios-quote"></span>
-                                                </div>
-                                                <div class="testimonials-content">
-                                                    <p class="testimonial-text">
-                                                        In skill center , I came to learn new technology Angular on live projects. <br> My trainer is very good to explain the technology .<br> HR is also very good he is very helpful in nature.
-
-                                                    </p>
-                                                </div>
-                                                <div class="testimonial-author-box">
-                                                    <img src="/public/img/user.jpg" alt="" class="testimonial-avatar">
-                                                    <h5 class="testimonial-author">Vikash yadav <br> Angular Trainee</h5>
+                                <%
+                               reviews.forEach((r)=>{%>
+                                    <div class="carousel-item-a">
+                                        <div class="testimonials-box">
+                                            <div class="row">
+                                                <div class="col-sm-12 col-md-12">
+                                                    <div class="testimonial-ico">
+                                                        <span class="ion-ios-quote"></span>
+                                                    </div>
+                                                    <div class="testimonials-content">
+                                                        <p class="testimonial-text text-justify">
+                                                            <%= r.r_desc%>
+                                                        </p>
+                                                    </div>
+                                                    <div class="testimonial-author-box">
+                                                        <img src="/public/img/user.jpg" alt="" class="testimonial-avatar">
+                                                        <h5 class="testimonial-author">
+                                                            <span class="text-capitalize">
+                                                                <%= r.r_title%><br> "
+                                                                    <%= r.u_type%>"
+                                                            </span>
+                                                        </h5>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="carousel-item-a">
-                                    <div class="testimonials-box">
-                                        <div class="row">
-
-                                            <div class="col-sm-12 col-md-12">
-                                                <div class="testimonial-ico">
-                                                    <span class="ion-ios-quote"></span>
-                                                </div>
-                                                <div class="testimonials-content">
-                                                    <p class="testimonial-text">
-                                                        In chetu skill center, I came to learn new technologies Angular . I m learning a lot of knowledge this center. the trainer is very good and skilled professional.
-                                                    </p>
-                                                </div>
-                                                <div class="testimonial-author-box">
-                                                    <img src="/public/img/user.jpg" alt="" class="testimonial-avatar">
-                                                    <h5 class="testimonial-author">Vivek Rastogi<br> (Angular batch)</h5>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                    <%})
+                               %>
 
                             </div>
                         </div>

@@ -42,11 +42,14 @@
                                                                     <div>
                                                                         <div class="modal-body">
                                                                             <div class="row form-group">
-                                                                                <div class="col-lg-12 col-md-12">
-                                                                                    <label class="form-control-label">Review Title </label>
-                                                                                    <input type="text" name="r_title" id="r_title" class="form-control" placeholder="title">
+                                                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                                    <label class="form-control-label">Full Name </label>
+                                                                                    <input type="text" name="r_title" id="r_title" class="form-control" placeholder="fullname">
                                                                                 </div>
-
+                                                                                <div class="col-lg-6 col-md-6 col-sm-12">
+                                                                                    <label class="form-control-label">Who write</label>
+                                                                                    <input type="text" name="u_type" id="u_type" class="form-control" placeholder="like. tranee batch name & others">
+                                                                                </div>
                                                                             </div>
                                                                             <div class="row form-group">
                                                                                 <div class="col-lg-12 col-md-12 col-sm-12">
@@ -98,11 +101,11 @@
                                                                     <table class="table table-bordered dataTable" id="dataTable" width="100%" cellspacing="0" role="grid" aria-describedby="dataTable_info" style="width: 100%;">
                                                                         <thead>
                                                                             <tr role="row">
-                                                                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending" style="width: 50px;">S.No</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">Userid</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 213px;">Title</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">Date</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 213px;">Description</th>
+                                                                                <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending">S.No</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">admin</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Full Name</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Date</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 350px;">Description</th>
                                                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Action</th>
                                                                             </tr>
                                                                         </thead>
@@ -125,8 +128,8 @@
                                                                                     <td>
                                                                                         <%= r.dated%>
                                                                                     </td>
-                                                                                    <td class="justify-content">
-                                                                                        <%= r.r_desc%>
+                                                                                    <td class="text-justify">
+                                                                                        <%= r.r_desc.slice(0,200)%>
                                                                                     </td>
                                                                                     <td>
                                                                                         <button id="rEdit<%= r.id%>" onclick="return rEditFunc(`<%= r.id%>`)" class="btn btn-info btn-circle">

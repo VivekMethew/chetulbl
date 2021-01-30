@@ -2,14 +2,24 @@ const express = require('express')
 const router = express.Router();
 const { searchRecord } = require('../config/connection')
 
-router.get('/', (req, res) => {
+router.get('/', async(req, res) => {
     try {
-        searchRecord('select * from tbl_courses', (err, result) => {
+        await searchRecord('select * from tbl_courses', (err, courses) => {
             if (err) {
                 return res.send('Error', err)
             }
-            // console.log(result.recordset)
-            return res.render('home/index', { courses: result })
+            searchRecord('select * from reviews', (err, reviews) => {
+                if (err) {
+                    return res.send('Error', err)
+                }
+                searchRecord("select * from tbl_employee where emp_desg='hr'", (err, employees) => {
+                    if (err) {
+                        return res.send('Error', err)
+                    }
+                    // console.log(employees)
+                    return res.render('home/index', { courses: courses, reviews: reviews, hr_emp: employees })
+                })
+            })
         })
     } catch (err) {
         return res.send('Error', err)

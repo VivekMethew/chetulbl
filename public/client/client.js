@@ -10,7 +10,7 @@ $(document).ready(function() {
                 data: {
                     emp_design: $('#emp_design').val(),
                     fname: $('#fname').val(),
-                    lname: $('#fname').val(),
+                    lname: $('#lname').val(),
                     email: $('#email').val(),
                     phone: $('#phone').val()
                 }
@@ -161,6 +161,7 @@ $(document).ready(function() {
         var form_data = new FormData();
         let uploadPicReview = $("input[name='uploadPicReview']");
         if (uploadPicReview[1].checked) {
+            form_data.append('u_type', $('#u_type').val());
             form_data.append('r_title', $('#r_title').val());
             form_data.append('r_desc', $('#r_desc').val());
             axios({
@@ -184,13 +185,13 @@ $(document).ready(function() {
         }
         if (uploadPicReview[0].checked) {
             let file_data = $('#rv_file').prop('files')
+            let u_type = $('#u_type').val();
             let r_title = $('#r_title').val();
             let r_desc = $('#r_desc').val();
             for (let i = 0; i < file_data.length; i++) {
                 form_data.append('r_files', file_data[i])
-                    // console.log(file_data[i])
             }
-
+            form_data.append('u_type', u_type);
             form_data.append('r_title', r_title);
             form_data.append('r_desc', r_desc);
             axios({
@@ -242,12 +243,10 @@ function eDeleteFunc(id) {
 
 function cEditFunc(id) {
     if (confirm("Edit")) {
-        console.log('ok')
-            // axios.delete(`/admin/event_notices/${id}`)
-            //     .then(function(response) {
-            //         console.log(response.data);
-            //         location.reload()
-            //     })
+        // c_title
+        // c_url
+        // document.getElementById('add_courses_update').disabled = false
+        console.log('id :', id)
     }
 }
 

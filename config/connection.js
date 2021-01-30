@@ -102,10 +102,11 @@ const insert_tbl_employee = (emp_desg, fname, lname, email, phone, callback) => 
 }
 
 
-const insert_reviews = (userid, r_title, r_desc, r_img, callback) => {
+const insert_reviews = (u_type, userid, r_title, r_desc, r_img, callback) => {
     var conn = new sql.ConnectionPool(config)
     conn.connect(function(err) {
         var request = new sql.Request(conn);
+        request.input('u_type', sql.VarChar(100), u_type);
         request.input('userid', sql.VarChar(100), userid);
         request.input('r_title', sql.VarChar(100), r_title);
         request.input('r_desc', sql.VarChar(sql.MAX), r_desc);

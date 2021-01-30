@@ -237,6 +237,7 @@ router.post('/add_review', uploadReviews.array('r_files', 10), async(req, res) =
             imgurl = null
         }
         await insert_reviews(
+            req.body.u_type,
             req.session.email,
             req.body.r_title,
             req.body.r_desc,
