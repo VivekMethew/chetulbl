@@ -134,10 +134,10 @@
                                                                         <thead>
                                                                             <tr role="row">
                                                                                 <th class="sorting_asc" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Name: activate to sort column descending" aria-sort="ascending" style="width: 50px;">S.No</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">Type</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">Title</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 244px;">Description</th>
-                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending" style="width: 213px;">Date</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Type</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending">Title</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Position: activate to sort column ascending" style="width: 350px;">Description</th>
+                                                                                <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Office: activate to sort column ascending">Date</th>
                                                                                 <th class="sorting" tabindex="0" aria-controls="dataTable" rowspan="1" colspan="1" aria-label="Age: activate to sort column ascending">Action</th>
                                                                             </tr>
                                                                         </thead>
@@ -159,12 +159,12 @@
                                                                                         <%= en.e_title%>
                                                                                     </td>
                                                                                     <td class="text-justify">
-                                                                                        <%= en.e_desc.slice(1,100)%>
+                                                                                        <%= en.e_desc.slice(0,100)%>
                                                                                     </td>
                                                                                     <td>
                                                                                         <%
                                                                                            if(en.dated === null){%>
-                                                                                            <span>Pending</span>
+                                                                                            <span>********</span>
                                                                                             <% } else{%>
                                                                                                 <%= en.dated%>
                                                                                                     <% }
